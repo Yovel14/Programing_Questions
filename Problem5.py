@@ -16,6 +16,6 @@ for i in range(2,21):
             pcount+=1
         dic[j] = max(dic.get(j,0),pcount)
 ans = 1
-for k,v in dic.items():
+for k,v in dic.items():#get the min
     ans*=(k**v)
 print(ans)
