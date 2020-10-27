@@ -8,6 +8,7 @@ Hence the difference between the sum of the squares of the first ten natural num
 3025-385 = 2640.
 
 Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.
+(https://projecteuler.net/problem=6)
 '''
 def Difference_Of_Sums(n):
     a = (n*(n+1)*(2*n+1))/6 #sum of 1^2+2^+3^2...+n^2
