@@ -3,6 +3,16 @@ By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, we can see that 
 
 What is the 10 001st prime number?
 '''
+'''
+idea: 
+    using both the properties of primes that say:
+        1. all Primes but 2,3 are of the form 6n+-1
+        2. the lowest highest possible Prime factor of a number is its square root
+    creating a list of prime to check if the next number is a prime and if the number is add to the list
+    searching the list goest up to the square root of number checking
+    checking only for number up of the form 6n+-1 since all Primes but 2,3 are of the form 6n+-1
+'''
+
 from math import sqrt
 
 
