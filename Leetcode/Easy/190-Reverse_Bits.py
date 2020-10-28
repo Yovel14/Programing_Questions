@@ -24,9 +24,9 @@ Explanation: The input binary string 11111111111111111111111111111101 represents
 
 
 Constraints:
-
     The input must be a binary string of length 32
 
+(https://leetcode.com/problems/reverse-bits/)
 '''
 '''
 Idea:

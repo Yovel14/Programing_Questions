@@ -14,6 +14,7 @@ Output: ["AAAAAAAAAA"]
 Constraints:
     0 <= s.length <= 105
     s[i] is 'A', 'C', 'G', or 'T'.
+(https://leetcode.com/problems/repeated-dna-sequences/)
 '''
 '''
 Idea:
