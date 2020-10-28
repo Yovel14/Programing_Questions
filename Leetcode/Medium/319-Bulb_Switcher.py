@@ -30,7 +30,7 @@ Idea:
     second observation:
         numbers with odd number of devisors have a whole square root
         Explanation:
-            the square root of a number is multiplied by it self thus it has an odd amount of devisors
+            the square root of a number is multiplied by it self thus it has an odd amount of devisors because we can devide each multple into pairs
     
     third observation:
         the amount of numbers below n with odd number of devisors is sqrt of n and round down to a whole number
