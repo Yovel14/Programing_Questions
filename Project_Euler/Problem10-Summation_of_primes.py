@@ -6,7 +6,8 @@ Find the sum of all the primes below two million.
 '''
 '''
 Idea:
-    start from 5 and use the form of primes (2,3)#the sieve primality test would be faster
+    start from 5 and use the form of primes (2,3)
+    #the sieve primality test would be faster(and can be optimized by not counting even numbers and save space since we can skeep on them even in the )
     check if a number is a Prime using a created list of primes
 '''
 import time
