@@ -40,7 +40,6 @@ def findPeakElement1(nums = []):
 
 
 #find peak through recursion
-
 def findPeakElement2(nums,low = 0,high = -1):
     if high ==-1: high = len(nums)-1
     if low == high: return low
@@ -48,8 +47,3 @@ def findPeakElement2(nums,low = 0,high = -1):
     if nums[mid]<nums[mid+1]:
         return findPeakElement2(nums,mid+1,high)
     return findPeakElement2(nums,low,mid)
-
-
-
-
-
