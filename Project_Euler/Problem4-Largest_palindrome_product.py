@@ -15,7 +15,7 @@ for a in range(999,99,-1):
     if a*a<m:
         break
     t = (a//11)*11#To get number lower than `a` devisable by 11 but reciving the closest number
-    for b in range(t,99,-11):#-1 11 and not -1  becuase see *1
+    for b in range(t,99,-11):#-11 and not -1  becuase see *1
         t = a*b
         if t<m:
             continue
@@ -36,4 +36,7 @@ And then:
 100001a + 10010b + 1100c
 
 Factoring out 11, you get:
+
+11(9091a + 910b + 100c)
+meaning the palindrome is devisable by 11
 '''
