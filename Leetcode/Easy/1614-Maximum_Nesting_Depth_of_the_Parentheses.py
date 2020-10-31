@@ -48,7 +48,7 @@ Constraints:
 '''
 '''
 Idea:
-    run with count and add 1 for value '(' and remove 1 for value')' (while checking for max each time
+    run with count and add 1 for value '(' and remove 1 for value')' (while checking for max each time I add to ocount)
 '''
 
 def maxDepth(s):
