@@ -34,7 +34,7 @@ def fib2():
     Sum = 0
     while f_n_3<4000000:
         Sum+=f_n_3
-
+        
         t = 4*f_n_3+f_n_6
         f_n_6 = f_n_3
         f_n_3 = t
