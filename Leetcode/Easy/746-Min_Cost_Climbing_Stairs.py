@@ -1,4 +1,4 @@
-def minCostClimbingStairs(cost):
+def minCostClimbingStairs(cost):# using dynamic programming tabulation
     prev,current = cost[0],cost[1]
     for n in cost[2:]:
         prev, current = current,n+min(prev,current)
