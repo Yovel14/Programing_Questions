@@ -13,8 +13,6 @@ int main(){
 
     // n cities numbers from 0 to (n-1)
     int t,n,x,y,k;
-    int tsize;
-    bool was_infected;
     cin>>t;
 
     while(t--){//k size of jumps // x current city // y city you live in
