@@ -23,7 +23,7 @@ int Min(int a, int b, int c)
 	return c;
 }
 
-int main() // using sorted set would be faster O(nlog2(n))
+int main() // using sorted set with three iterators would be faster O(nlog2(n))
 {
 	ios_base::sync_with_stdio(0);
 	cin.tie(0);
