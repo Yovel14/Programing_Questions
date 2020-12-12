@@ -7,5 +7,5 @@ bool isPalindrome(int x) {
 		out = 10*out + x%10;
 		x/=10;
 	}
-	return (x==out || x== out/10);
+	return (x==out || x== out/10);// x==out: for even number of digits // x == out/10: for odd number of digits
 }
