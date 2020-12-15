@@ -1,3 +1,6 @@
+#include<vector>
+using namespace std;
+
 void Bubble_Sort(vector<int> &v) // O(n^2) because doing n
 {	
 	int n = v.size();

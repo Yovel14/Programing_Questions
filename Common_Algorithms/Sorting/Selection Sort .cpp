@@ -1,3 +1,6 @@
+#include<vector>
+using namespace std;
+
 void Selection_Sort(vector<int> &v)// O(n^2)
 {
 	int n = v.size();
