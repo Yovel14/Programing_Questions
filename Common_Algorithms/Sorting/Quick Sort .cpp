@@ -14,7 +14,7 @@ void Choose_Pivot(vector<int> &v,int &l, int &r)// sets pivot as the the value o
 	}
 }
 
-void Quick_Sort(vector<int> &v,int l = 0,int r = -2)
+void Quick_Sort(vector<int> &v,int l = 0,int r = -2)// O(n^2) worst case // O(nlog(n)) average case
 {
 	if(r == -2) r = v.size()-1;
 	
