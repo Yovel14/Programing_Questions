@@ -20,7 +20,7 @@ void Quick_Sort(vector<int> &v,int l = 0,int r = -2)
 	
 	if(l<r){
 
-		Choose_Pivot(v,l,r);
+		Choose_Pivot(v,l,r);// just to help it get closer to O(nlog(n))
 
 		int i = l;
 		for(int j = l;j<r;++j)
