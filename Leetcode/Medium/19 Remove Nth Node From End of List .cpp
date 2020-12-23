@@ -67,3 +67,15 @@ ListNode *removeNthFromEnd(ListNode *head, int &n) // execution with two pointer
 
 	return head;
 }
+
+ListNode *removeNthFromEnd(ListNode *head, int &n) // Recursion
+{
+	if (head == NULL) // if end
+		return NULL;
+
+	head->next = removeNthFromEnd(head->next, n); // set to the next node
+
+	if (--n == 0) // do I need to remove this node
+		return head->next;
+	return head;
+}
