@@ -3,22 +3,22 @@ ListNode *removeNthFromEnd(ListNode *head, int &n) // exection with two runs
 	int length = 0;
 	ListNode *p = head;
 
-	while (p)
+	while (p) // find length
 	{
 		length++;
 		p = p->next;
 	}
 
-	if (n == length)
+	if (n == length) // check if need to remove the first node
 		return head->next;
 
 	length -= n;
-	length--; // because it's 1 indexing
+	length--;
 
 	p = head;
-	while (length--)
+	while (length--) // get p the node before the n-th from the end
 		p = p->next;
-	p->next = p->next->next;
+	p->next = p->next->next; // the move the node
 
 	return head;
 }
@@ -29,20 +29,20 @@ ListNode *removeNthFromEnd(ListNode *head, int &n) // excution using stack
 	int length = 0;
 
 	ListNode *t = head;
-	while (t)
+	while (t) // push all nodes
 	{
 		s.push(t);
 		t = t->next;
 		length++;
 	}
 
-	if (length == n)
+	if (length == n) // if need to remove the first node
 		return head->next;
 
-	while (n--)
+	while (n--) // get the n-1 node from the end
 		s.pop();
 	t = s.top();
-	t->next = t->next->next;
+	t->next = t->next->next; // remove the node
 
 	return head;
 }
@@ -51,14 +51,14 @@ ListNode *removeNthFromEnd(ListNode *head, int &n) // execution with two pointer
 {
 	ListNode *t1 = head;
 
-	while (t1 && n--)
+	while (t1 && n--) // get t1 to the  n+1 node thus the difference between t1 and t2 is n at all times
 		t1 = t1->next;
 
-	if (t1 == NULL)
+	if (t1 == NULL) // if need to remove teh first Node
 		return head->next;
 
 	ListNode *t2 = head;
-	while (t1->next)
+	while (t1->next) // find the node before n-th from the end
 	{
 		t1 = t1->next;
 		t2 = t2->next;
