@@ -1,24 +1,4 @@
 '''
-Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.
-
-Note: For the purpose of this problem, we define empty string as valid palindrome.
-
-Example 1:
-
-Input: "A man, a plan, a canal: Panama"
-Output: true
-
-Example 2:
-
-Input: "race a car"
-Output: false
-
-Constraints:
-    s consists only of printable ASCII characters.
-
-(https://leetcode.com/problems/valid-palindrome/)
-'''
-'''
 Idea:
     run with two indexes i,j. i from the start j from the end
     if reached ' '(space) add 1 to i or remove 1 from j
