@@ -1,4 +1,24 @@
 // solution 1
+vector<string> generateParenthesis(int n)
+{
+	if (n == 0)
+		return {""};
+	vector<vector<string>> cache(n + 1);
+	cache[0] = {""};
+
+	for (int i = 0; i <= n; ++i)
+		for (int j = 0; j < i; ++j)
+		{
+			vector<string> left = cache[j];
+			vector<string> right = cache[i - j - 1];
+			for (string &l : left)
+				for (string &r : right)
+					cache[i].push_back("(" + l + ")" + r);
+		}
+	return cache[n];
+}
+
+// solution 2
 void solve(int &n, int count_open, int count_closed, string current, vector<string> &com)
 {
 	if (count_open == n && count_closed == n)
@@ -19,7 +39,7 @@ vector<string> generateParenthesis(int &n)
 	return com;
 }
 
-// solution 2
+// solution 3
 vector<string> generateParenthesis(int n) // there might be a possibility to use memozation to reduce time complexity in this solution
 {
 	if (n == 0)
