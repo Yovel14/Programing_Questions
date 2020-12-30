@@ -1,19 +1,14 @@
 // solution 1
 vector<string> generateParenthesis(int n)
 {
-	if (n == 0)
-		return {""};
 	vector<vector<string>> cache(n + 1);
 	cache[0] = {""};
-
-	for (int i = 0; i <= n; ++i)
+	for (int i = 1; i <= n; i++)
 		for (int j = 0; j < i; ++j)
 		{
-			vector<string> left = cache[j];
-			vector<string> right = cache[i - j - 1];
-			for (string &l : left)
-				for (string &r : right)
-					cache[i].push_back("(" + l + ")" + r);
+			for (string l : cache[j])
+				for (string r : cache[i - j - 1])
+					cache[i].push_back('(' + l + ')' + r);
 		}
 	return cache[n];
 }
