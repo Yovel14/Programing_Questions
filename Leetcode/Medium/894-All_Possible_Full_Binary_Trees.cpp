@@ -10,21 +10,17 @@ struct TreeNode
 	TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-class Solution
+vector<TreeNode *> allPossibleFBT(int n)
 {
-public:
-	vector<TreeNode *> allPossibleFBT(int n)
-	{
-		if (n % 2 == 0)
-			return {};
-		vector<TreeNode *> cache[n + 1];
-		cache[1] = {new TreeNode()};
+	if (n % 2 == 0)
+		return {};
+	vector<TreeNode *> cache[n + 1];
+	cache[1] = {new TreeNode()};
 
-		for (int place = 3; place < n + 1; ++place)
-			for (int i = 1; i < place; ++i)
-				for (TreeNode *left : cache[i])
-					for (TreeNode *right : cache[place - 1 - i])
-						cache[place].push_back(new TreeNode(0, left, right));
-		return cache[n];
-	}
-};
+	for (int place = 3; place <= n; place += 2) // starting place from 3 because for even numbers there are no trees and thus I am also skipping by two
+		for (int i = 0; i < place; i++)
+			for (auto left : cache[i])
+				for (auto right : cache[place - i - 1])
+					cache[place].push_back(new TreeNode(0, left, right));
+	return cache[n];
+}
