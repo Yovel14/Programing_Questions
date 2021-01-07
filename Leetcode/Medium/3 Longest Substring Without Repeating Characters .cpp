@@ -1,73 +1,52 @@
-int lengthOfLongestSubstring(string s) // O(n) solution sliding window
+int lengthOfLongestSubstring(string &s) // O(2*n)
 {
-	// use map to detirmin repeating char and do a sliding window
-	unordered_set<char> exist;
-	int mx = 0;
-	int i = 0;
-	int j = 0;
-	int len = s.size();
-	while (i < len && j < len)
+	// I will do this with two pointers one for start and one for end and use a map to check whay is in the current string
+	int start = 0;
+	int end = 0;
+	int mx_length = 0;
+	bool exist[189] = {0};
+	int n = s.size();
+
+	while (end < n)
 	{
-		if (exist.find(s[j]) == exist.end())
+		if (!exist[s[end]])
 		{
-			exist.insert(s[j]);
-			++j;
+			exist[s[end]] = true;
+			mx_length = max(mx_length, end - start + 1);
+			end++;
 		}
 		else
 		{
-			if (j - i > mx)
-				mx = j - i;
-			exist.erase(s[i]);
-			++i;
+			exist[s[start]] = false;
+			start++;
 		}
 	}
-	if (j - i > mx)
-		return j - i;
-	return mx;
+	return mx_length;
 }
 
-int lengthOfLongestSubstring(string s)
+int lengthOfLongestSubstring(string &s) // O(n)
 {
-	// optimized sliding window
-	unordered_map<char, int> exist;
-	int mx = 0;
-	int i = 0;
-	int j = 0;
-	int len = s.size();
-	while (i < len && j < len)
+	// since the string consists only of ascii char I can use an array
+	int exist[128];
+	memset(exist, -1, sizeof(exist));
+	int mx_length = 0;
+	int start = 0;
+	int end = 0;
+	int n = s.size();
+
+	while (end < n)
 	{
-		if (exist.find(s[j]) != exist.end())
-			i = max(exist[s[j]], i);
-
-		if (j - i + 1 > mx)
-			mx = j - i + 1;
-
-		exist[s[j]] = j + 1;
-		++j;
+		if (exist[s[end]] < start)
+		{
+			exist[s[end]] = end;
+			mx_length = max(mx_length, end - start + 1);
+			end++;
+		}
+		else
+			start = exist[s[end]] + 1;
 	}
 
-	return mx;
+	return mx_length;
 }
 
-int lengthOfLongestSubstring(string s)
-{
-	// since the string consists only of ascii char I can use an array and each index will be a ascii number for that char
-	int exist[128] = {0};
-	int mx = 0;
-	int i = 0;
-	int j = 0;
-	int len = s.size();
-	while (i < len && j < len)
-	{
-		if (exist[s[j]] != 0)
-			i = max(exist[s[j]], i);
-
-		if (j - i + 1 > mx)
-			mx = j - i + 1;
-
-		exist[s[j]] = j + 1;
-		++j;
-	}
-
-	return mx;
-}
+// all of the above solutions can be done with a map but since there are only ascii chars there is no need to use map because o(1) of an array is faster than of that on a unordered map
