@@ -19,5 +19,6 @@ int minCostClimbingStairs(vector<int> &cost) // without changing vector
 		c2 = c1;
 		c1 = temp;
 	}
+
 	return min(c1, c2);
 }
