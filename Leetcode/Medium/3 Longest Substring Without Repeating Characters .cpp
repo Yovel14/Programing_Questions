@@ -21,6 +21,7 @@ int lengthOfLongestSubstring(string &s) // O(2*n)
 			start++;
 		}
 	}
+
 	return mx_length;
 }
 
