@@ -72,7 +72,7 @@ int maxSatisfaction(vector<int> &sat)
 	return mx;
 }
 
-// dp
+// dp O(n^2)
 int solve(int i, int level, vector<int> &sat, vector<vector<int>> &dp)
 {
 	if (i >= sat.size())
