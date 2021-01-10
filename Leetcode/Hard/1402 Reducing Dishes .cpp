@@ -1,4 +1,5 @@
-int maxSatisfaction(vector<int> &sat) // O(n^2)
+// O(n^2)
+int maxSatisfaction(vector<int> &sat)
 {
 	sort(sat.begin(), sat.end());
 
@@ -69,4 +70,24 @@ int maxSatisfaction(vector<int> &sat)
 		mx += cur_sum;
 	}
 	return mx;
+}
+
+// dp
+int solve(int i, int level, vector<int> &sat, vector<vector<int>> &dp)
+{
+	if (i >= sat.size())
+		return 0;
+	if (dp[i][level] != -1)
+		return dp[i][level];
+
+	int didnt_take = solve(i + 1, level, sat, dp);
+	int took = solve(i + 1, level + 1, sat, dp) + sat[i] * level;
+	return dp[i][level] = max(didnt_take, took);
+}
+int maxSatisfaction(vector<int> &sat)
+{
+	sort(sat.begin(), sat.end());
+
+	vector<vector<int>> dp(sat.size(), vector<int>(sat.size() + 1, -1));
+	return solve(0, 1, sat, dp);
 }
