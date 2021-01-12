@@ -1,30 +1,33 @@
-class Solution
+ListNode *addTwoNumbers(ListNode *l1, ListNode *l2)
 {
-public:
-	ListNode *addTwoNumbers(ListNode *l1, ListNode *l2)
+	// the idea is to add both like in long addtion while kipping the reminder
+
+	ListNode *setinel = new ListNode(0);
+	ListNode *runer = setinel;
+	int sum = 0;
+	while (l1 || l2 || sum)
 	{
-		//Idea is to add both wile adding to a new linked list
-		ListNode *orgin = new ListNode(0);
-		ListNode *cur = orgin;
-		int sum = 0;
-		while (l1 || l2)
+		if (l1)
 		{
-			if (l1)
-			{
-				sum += l1->val;
-				l1 = l1->next;
-			}
-			if (l2)
-			{
-				sum += l2->val;
-				l2 = l2->next;
-			}
-			cur->next = new ListNode(sum % 10);
-			sum /= 10;
-			cur = cur->next;
+			sum += l1->val;
+			l1 = l1->next;
 		}
-		if (sum != 0)
-			cur->next = new ListNode(sum % 10);
-		return orgin->next;
+		if (l2)
+		{
+			sum += l2->val;
+			l2 = l2->next;
+		}
+		if (sum > 9)
+		{
+			runer->next = new ListNode(sum - 10);
+			sum = 1;
+		}
+		else
+		{
+			runer->next = new ListNode(sum);
+			sum = 0;
+		}
+		runer = runer->next;
 	}
-};
+	return setinel->next;
+}
