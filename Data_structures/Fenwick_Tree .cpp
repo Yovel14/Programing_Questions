@@ -1,20 +1,23 @@
-#include <vector>
+#include <iostream>
+
 using namespace std;
 
+template <typename T>
 class Fenwick_Tree
 {
 private:
 	int size;
-	vector<int> tree;
+	T *tree;
 
 public:
 	Fenwick_Tree(int size)
 	{
 		this->size = size + 1;
-		this->tree = vector<int>(this->size);
+		this->tree = new T[this->size]();
 	}
 
-	void update(int i, int delta)
+	// update value at index i
+	void update(int i, T delta)
 	{
 		i++;
 		while (i < size)
@@ -24,10 +27,11 @@ public:
 		}
 	}
 
-	int sum(int i)
+	// sum from 0 to i inclusive
+	T sum(int i)
 	{
 		i++;
-		int sum = 0;
+		T sum = 0;
 		while (i > 0)
 		{
 			sum += tree[i];
@@ -36,8 +40,33 @@ public:
 		return sum;
 	}
 
-	int range_sum(int l, int r) // not incluseive of r
+	// sum from l to r inclusive of both l and r
+	T range_sum(int l, int r)
 	{
-		return sum(l) - sum(r);
+		if (l > 0)
+			return sum(r) - sum(l - 1);
+		return sum(r);
+	}
+
+	// value at index. not sum to index
+	T get(int index)
+	{
+		return range_sum(index, index);
 	}
 };
+
+main()
+{
+	Fenwick_Tree<int> tree(2); // initialize
+
+	tree.update(0, 1);			 // update value at index 0
+	cout << tree.sum(0) << '\n'; // print sum to index 0;
+
+	tree.update(1, 2);			 // update value at index 1
+	cout << tree.sum(1) << '\n'; // print sum to index 1;
+
+	cout << tree.get(0) << '\n'; // get original value at index 0;
+
+	cout << tree.get(1) << '\n'; // get original value at index 1
+	return 0;
+}
