@@ -16,6 +16,11 @@ public:
 		this->tree = new T[this->size]();
 	}
 
+	~Fenwick_Tree()
+	{
+		delete tree;
+	}
+
 	// update value at index i
 	void update(int i, T delta)
 	{
@@ -68,5 +73,8 @@ main()
 	cout << tree.get(0) << '\n'; // get original value at index 0;
 
 	cout << tree.get(1) << '\n'; // get original value at index 1
+
+	tree.~Fenwick_Tree();
+
 	return 0;
 }
