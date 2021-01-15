@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -14,6 +15,36 @@ public:
 	{
 		this->size = size + 1;
 		this->tree = new T[this->size]();
+	}
+	Fenwick_Tree(vector<int> &v)
+	{
+		this->size = v.size() + 1;
+		this->tree = new T[this->size];
+		for (int i = 0; i < v.size(); i++)
+			this->tree[i + 1] = v[i];
+
+		int p;
+		for (int i = 1; i < this->size; i++)
+		{
+			p = i + (i & (~i + 1));
+			if (p < this->size)
+				tree[p] += tree[i];
+		}
+	}
+	Fenwick_Tree(int a[], int size)
+	{
+		this->size = size + 1;
+		this->tree = new T[this->size];
+		for (int i = 0; i < size; i++)
+			this->tree[i + 1] = a[i];
+
+		int p;
+		for (int i = 1; i < this->size; i++)
+		{
+			p = i + (i & (~i + 1));
+			if (p < this->size)
+				tree[p] += tree[i];
+		}
 	}
 
 	~Fenwick_Tree()
@@ -40,7 +71,7 @@ public:
 		while (i > 0)
 		{
 			sum += tree[i];
-			i ^= (i & (~i + 1)); // flip last on bit;
+			i -= (i & (~i + 1));
 		}
 		return sum;
 	}
@@ -75,6 +106,14 @@ main()
 	cout << "expected 2 : " << tree.get(1) << '\n'; // get original value at index 1;
 
 	tree.~Fenwick_Tree();
+
+	vector<int> test_vector = {1, 2};
+	Fenwick_Tree<int> tree2(test_vector);
+	cout << "expected 3 : " << tree2.sum(1) << '\n'; // print sum to index 1;
+
+	int test_arr[] = {1, 2};
+	Fenwick_Tree<int> tree3(test_arr, 2);
+	cout << "expected 3 : " << tree3.sum(1) << '\n'; // print sum to index 1;
 
 	return 0;
 }
