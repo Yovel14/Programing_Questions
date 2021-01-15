@@ -40,7 +40,7 @@ public:
 		while (i > 0)
 		{
 			sum += tree[i];
-			i -= (i & (~i + 1));
+			i ^= (i & (~i + 1)); // flip last on bit;
 		}
 		return sum;
 	}
@@ -64,15 +64,15 @@ main()
 {
 	Fenwick_Tree<int> tree(2); // initialize
 
-	tree.update(0, 1);			 // update value at index 0
-	cout << tree.sum(0) << '\n'; // print sum to index 0;
+	tree.update(0, 1);								// update value at index 0;
+	cout << "expected 1 : " << tree.sum(0) << '\n'; // print sum to index 0;
 
-	tree.update(1, 2);			 // update value at index 1
-	cout << tree.sum(1) << '\n'; // print sum to index 1;
+	tree.update(1, 2);								// update value at index 1;
+	cout << "expected 3 : " << tree.sum(1) << '\n'; // print sum to index 1;
 
-	cout << tree.get(0) << '\n'; // get original value at index 0;
+	cout << "expected 1 : " << tree.get(0) << '\n'; // get original value at index 0;
 
-	cout << tree.get(1) << '\n'; // get original value at index 1
+	cout << "expected 2 : " << tree.get(1) << '\n'; // get original value at index 1;
 
 	tree.~Fenwick_Tree();
 
