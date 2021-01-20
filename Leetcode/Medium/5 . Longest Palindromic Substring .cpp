@@ -1,51 +1,40 @@
-string longestPalindrome(string s)// O(n^2)
+string longestPalindrome(string s)
 {
-	// will try every middle position and go out from each center
+	// from each possible center open to check for a palindrome
 
-	int mx_length = 0;
-	int cur_length;
-	int mx_begin = 0;
 	int n = s.size();
-
-	for(int mid = 0; mid<n; ++mid)// odd length palindromes
+	int l, r;
+	int mx = 0;					// max palindromic subsequence
+	int si = -1;				// start index
+	for (int c = 0; c < n; c++) // c : center
 	{
-		cur_length = 1;
-		int left = mid-1;
-		int right = mid+1;
-
-		while(left>=0 && right<n && s[right] == s[left] )
+		// odd length;
+		l = c - 1;
+		r = c + 1;
+		while (l >= 0 && r < n && s[l] == s[r])
 		{
-			cur_length+=2;
-			--left;
-			++right;
+			l--;
+			r++;
+		}
+		if (r - l - 1 > mx)
+		{
+			mx = r - l - 1;
+			si = l + 1;
 		}
 
-		if(cur_length>mx_length)
+		// even length;
+		l = c;
+		r = c + 1;
+		while (l >= 0 && r < n && s[l] == s[r])
 		{
-			mx_length = cur_length;
-			mx_begin = left+1;
+			l--;
+			r++;
+		}
+		if (r - l - 1 > mx)
+		{
+			mx = r - l - 1;
+			si = l + 1;
 		}
 	}
-
-	for(int mid = 0; mid<n; ++mid)// even length palindromes
-	{
-		cur_length = 0;
-		int left = mid;
-		int right = mid+1;
-
-		while(left>=0 && right<n && s[right] == s[left] )
-		{
-			cur_length+=2;
-			--left;
-			++right;
-		}
-
-		if(cur_length>mx_length)
-		{
-			mx_length = cur_length;
-			mx_begin = left+1;
-		}
-	}
-
-	return s.substr(mx_begin,mx_length);
+	return s.substr(si, mx);
 }
