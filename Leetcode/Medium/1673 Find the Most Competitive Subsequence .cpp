@@ -1,3 +1,5 @@
+// Time : O(n)
+// Space : O(k)
 vector<int> mostCompetitive(vector<int> &nums, int k)
 {
 	if (k == nums.size())
