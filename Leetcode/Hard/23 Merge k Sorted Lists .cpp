@@ -124,3 +124,5 @@ ListNode *mergeKLists(vector<ListNode *> &lists)
 {
 	return mergek(lists, 0, lists.size() - 1);
 }
+
+// this could be solved with priority queue or some other ds
