@@ -1,6 +1,6 @@
 // breadth for search
-// Time : O(n)
-// Space : O(n) // could be reduced by instead of using an array to check if visited just turn in the grid the 0 to 1 like in the code below
+// Time : O(n^2)
+// Space : O(n^2) // could be reduced by instead of using an array to check if visited just turn in the grid the 0 to 1 like in the code below
 
 int shortestPathBinaryMatrix(vector<vector<int>> &grid)
 {
@@ -49,7 +49,7 @@ int shortestPathBinaryMatrix(vector<vector<int>> &grid)
 	return -1;
 }
 
-// Time : O(n)
+// Time : O(n^2)
 // Space : O(1)
 int shortestPathBinaryMatrix(vector<vector<int>> &grid)
 {
