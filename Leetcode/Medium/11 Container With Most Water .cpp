@@ -1,27 +1,29 @@
-int maxArea(vector<int> &height) // O(n)
+// Time : O(n)
+// Space : O(1)
+int maxArea(vector<int> &height)
 {
 	int mx = 0;
-	int r = 0, l = height.size() - 1;
-	int temp;
-	while (r < l)
+	int l = 0, r = height.size() - 1;
+
+	while (l < r)
 	{
-		if (height[r] >= height[l])
+		if (height[r] > height[l])
 		{
-			temp = height[l] * (l - r);
-			l--;
+			mx = max(mx, height[l] * (r - l));
+			l++;
 		}
 		else
 		{
-			temp = height[r] * (l - r);
-			r++;
+			mx = max(mx, height[r] * (r - l));
+			r--;
 		}
-		if (temp > mx)
-			mx = temp;
 	}
 
 	return mx;
 }
 
+// Time : O(n^2)
+// Space : O(1)
 int maxArea(vector<int> &height) // O(n^2)
 {
 	int mx = 0;
