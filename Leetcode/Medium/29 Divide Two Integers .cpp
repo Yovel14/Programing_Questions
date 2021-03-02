@@ -93,3 +93,45 @@ int divide(int dividend, int divisor) // note divisor != 0
 		return ~count + 1;
 	return count;
 }
+
+int divide(int a, int b) // note divisor != 0
+{
+	if (a == 0)
+		return 0;
+	bool negitive = ((a < 0) != (b < 0));
+	if (a == b)
+		return 1;
+	if (b == 1)
+		return negitive ? -abs(a) : abs(a);
+	if (b == INT_MIN)
+		return 0;
+	if (b == -1)
+		return a == INT_MIN ? INT_MAX : -a;
+
+	if (b < 0)
+		b = -b;
+	int count = 0;
+	if (a == INT_MIN)
+	{
+		a += b;
+		count = 1;
+	}
+	if (a < 0)
+		a = -a;
+	int d1;
+	int cd;
+	while (b < a)
+	{
+		d1 = b;
+		cd = 1;
+		while (d1 <= a)
+		{
+			a -= d1;
+			count += cd;
+			cd <<= 1;
+			if (d1 <= 1073741823) // INT_MAX/2
+				d1 <<= 1;
+		}
+	}
+	return negitive ? -count : count;
+}
