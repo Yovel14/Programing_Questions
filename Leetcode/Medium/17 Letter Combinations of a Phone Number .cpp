@@ -1,3 +1,38 @@
+// Time : O(n^4);
+// Space : O(n^4)
+void solve(string &d, vector<string> &ds, string &s, vector<string> &ans, int i)
+{
+	if (i == d.size())
+	{
+		ans.push_back(s);
+		return;
+	}
+
+	for (char &c : ds[d[i] - '0'])
+	{
+		s.push_back(c);
+		solve(d, ds, s, ans, i + 1);
+		s.pop_back();
+	}
+	return;
+}
+vector<string> letterCombinations(string d)
+{
+	int n = d.size();
+	if (n == 0)
+		return {};
+	vector<string> ds = {"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+	vector<string> ans(pow(n, 3));
+	ans.resize(0);
+	std::string s;
+	s.resize(n);
+	s.resize(0);
+	solve(d, ds, s, ans, 0);
+	return ans;
+}
+
+// Time : O(n^4);
+// Space : O(n^4)
 void getcomb(string &digits, int index, vector<string> &com, string build_string) // works in O(3^n * 4^n) where n is number of digits that map to 4 letters number and m  number map to 4 letters
 {
 	if (index == digits.size())
