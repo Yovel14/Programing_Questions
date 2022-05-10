@@ -20,3 +20,5 @@ vector<vector<int>> combinationSum3(int k, int n) {
     solve(k,n,0,10,0,tsol,sol);
     return sol;
 }
+
+// could be improved by instead of iterating you could binary search for next location
