@@ -63,3 +63,35 @@ public:
 		return roomsVisitedCount == rooms.size();
 	}
 };
+
+// solution 3
+
+class Solution
+{
+private:
+	int helper(vector<vector<int>> &rooms, vector<bool> &foundKeys, int roomNum)
+	{
+		if (foundKeys[roomNum])
+		{
+			return 0;
+		}
+
+		foundKeys[roomNum] = true;
+		int sum = 1;
+
+		for (int key : rooms[roomNum])
+		{
+			sum += helper(rooms, foundKeys, key);
+		}
+
+		return sum;
+	}
+
+public:
+	bool canVisitAllRooms(vector<vector<int>> &rooms)
+	{
+		vector<bool> foundKeys(rooms.size(), false);
+
+		return helper(rooms, foundKeys, 0) == rooms.size();
+	}
+};
