@@ -16,6 +16,21 @@ public:
     }
 };
 
+// Time O(n) faster
+// Space O(1)
+class Solution {
+public:
+    char nextGreatestLetter(vector<char>& letters, char target)
+    {
+        int i = 0;
+        while(i<letters.size() && letters[i]<= target)
+            i++;
+
+        if(letters.size()<=i)
+            return letters[0];
+        return letters[i];
+    }
+};
 
 // Time O(log(n))
 // Space O(1);
