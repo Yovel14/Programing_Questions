@@ -60,3 +60,20 @@ bool isAnagram(string s, string t)
 	sort(t.begin(), t.end());
 	return s == t;
 }
+
+
+// Time : O(n) where n is the size of s and t
+// Space : O(n)
+bool isAnagram(string s, string t) {
+  if(s.size()!=t.size()) return false;
+  vector<int>h(26,0);
+  for(int i=0;i<s.size();i++){
+      h[s[i]-'a']++;
+      h[t[i]-'a']--;
+  
+  }
+  for(int count:h){
+      if(count<0)return false;
+  }
+  return true;
+}
