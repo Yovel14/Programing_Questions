@@ -34,7 +34,8 @@ public:
 
 
 // awesome solution
-// invert each value on index i of string i thus it has at list one index different from every string.
+// simple explanation invert each value on index i of string i thus it has at list one index different from every string.
+// complex explanation I didn't read https://en.wikipedia.org/wiki/Cantor%27s_diagonal_argument
 
 string findDifferentBinaryString(vector<string>& nums)
 {
